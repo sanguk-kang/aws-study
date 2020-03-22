@@ -1,6 +1,9 @@
 # ###########################
 # * VPC 구성하기
- DOD : VPC 및 서브넷 기본환경 구성 완료 console 확인
+~~~
+ 1. 작업내용 : VPC, SUBNET, ROUTE Table, IGW, NAT 연결
+ 2. DOD : VPC 및 서브넷 기본환경 구성 완료 console 확인
+~~~
 
 ## 1. vpc 생성
  ksu-ntw-test-vpc
@@ -35,7 +38,10 @@
 
 # ###########################
 # * 네트워크 구성하기 (ASG 제외)
- DOD : ALB를 통한 pri EC2에 접속하여 화면 접속 확인 (http & https 확인)
+~~~
+ 1. 작업내용 : VPC 기본 환경에 ALB연결 및 EC2 연결
+ 2. DOD : ALB를 통한 pri EC2에 접속하여 화면 접속 확인 (http & https 확인)
+~~~
 
 ## 6. security groups (EC2, ELB 사용)
 1) ksu-ntw-alb-sg : 80, 433
@@ -63,9 +69,9 @@ ksu-ntw-jenkins-asg
 # ###########################
 # * 추가 작업 - auto scaling
 ~~~
- launch configuration - Auto scaling 구성을 위한 인스턴스
- Auto scaling group 생성
- DOD : ALB를 통하여 추가한 UI 서브넷 확인(8080 포트)
+ 1. 작업내용
+ 추가 subnet 생성 후 Auto scaling group 생성
+ 2. DOD : ALB를 통하여 추가한 UI 서브넷 확인(8080 포트)
 ~~~
 
 ## 11. 추가 subnet
