@@ -1,36 +1,37 @@
 # ###########################
 # VPC 구성하기
-# DOD : VPC 및 서브넷 기본환경 구성 완료 console 확인
+ DOD : VPC 및 서브넷 기본환경 구성 완료 console 확인
+
+## 1. vpc :
+ ksu-ntw-test-vpc
+ 10.90.0.0/16
+
+## 2. subnet :
+### 1) pub
+ ksu-ntw-pub-1a-sn
+ 10.90.10.0/24
+
+ ksu-ntw-pub-1c-sn
+ 10.90.11.0/24
+
+### 2) pri
+ ksu-ntw-mgmt-1a-sn
+ 10.90.20.0/24
+
+ ksu-ntw-mgmt-1c-sn
+ 10.90.21.0/24
+
+## 3. igw 생성 (vpc 연결)
+ ksu-ntw-igw
+
+
+## 4. route table 생성 및 맵핑
+ ksu-ntw-pub-rt : 3번 IGW 맵핑
+ ksu-ntw-pri-rt : 5번 NAT 맵핑
+
+## 5. nat (public 1a 생성)
+ ksu-ntw-nat
 # ###########################
-1. vpc :
-ksu-ntw-test-vpc
-10.90.0.0/16
-
-2. subnet :
-1) pub
-ksu-ntw-pub-1a-sn
-10.90.10.0/24
-
-ksu-ntw-pub-1c-sn
-10.90.11.0/24
-
-2) pri
-ksu-ntw-mgmt-1a-sn
-10.90.20.0/24
-
-ksu-ntw-mgmt-1c-sn
-10.90.21.0/24
-
-3. igw 생성 (vpc 연결)
-ksu-ntw-igw
-
-
-4. route table 생성 및 맵핑
-ksu-ntw-pub-rt : 3번 IGW 맵핑
-ksu-ntw-pri-rt : 5번 NAT 맵핑
-
-5. nat (public 1a 생성)
-ksu-ntw-nat
 
 # ###########################
 # 네트워크 구성하기
@@ -38,25 +39,25 @@ ksu-ntw-nat
 # DOD : ALB를 통한 pri EC2에 접속하여 화면 접속 확인 (http & https 확인)
 # ###########################
 
-6. security groups (EC2, ELB 사용)
+## 6. security groups (EC2, ELB 사용)
 1) ksu-ntw-alb-sg : 80, 433
 2) ksu-ntw-jenkins-sg : 8088, 8081
 3) ksu-ntw-mgmt-sg : 22
  - myIp, vpcIp
 
-7. ec2 (private 영역)
+## 7. ec2 (private 영역)
 ksu-ntw-jenkins-ec2
 ami : ami-07ab3fd16141e82e4
 
-8. taget group (ELB 사용)
+## 8. taget group (ELB 사용)
 ksu-ntw-jenkins-tg8088 : 8088
 ksu-ntw-mgmt-tg22 : 22
 
-9. elb
-1) alb : ksu-ntw-jenkins-alb
+## 9. elb
+### 1) alb : ksu-ntw-jenkins-alb
  - 가용영역 pub
 
-10.auto scaling (하위 추가 Study)
+## 10.auto scaling (하위 추가 Study)
 ksu-ntw-ui-lc
 ksu-ntw-jenkins-asg
 
