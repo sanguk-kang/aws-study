@@ -62,9 +62,11 @@ ksu-ntw-jenkins-asg
 
 # ###########################
 # * 추가 작업 - auto scaling
+~~~
  launch configuration - Auto scaling 구성을 위한 인스턴스
  Auto scaling group 생성
  DOD : ALB를 통하여 추가한 UI 서브넷 확인(8080 포트)
+~~~
 
 ## 11. 추가 subnet
 ### 1) pri sub
